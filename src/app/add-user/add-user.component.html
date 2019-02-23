@@ -1,0 +1,77 @@
+<div class="col-md-6">
+  <h2 class="text-center">{{userFormlabel}}</h2>
+  <form [formGroup]="addForm" novalidate class="form">
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input formControlName="first_name" placeholder="First Name" name="empName" class="form-control" id="firstName">
+      <div class="alert  alert-danger"
+           *ngIf="addForm.get('first_name').pristine && addForm.get('first_name').hasError('required') && addForm.get('first_name').touched">
+        First Name is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+      <input formControlName="last_name" placeholder="Last Name" name="lastName" class="form-control" id="lastName">
+      <div class="alert  alert-danger"
+           *ngIf="addForm.get('last_name').hasError('required') && addForm.get('last_name').touched">
+        Last Name is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="userEmail">Email:</label>
+      <input formControlName="user_email" placeholder="Email" name="userEmail" class="form-control" id="userEmail">
+      <div class="alert  alert-danger"
+           *ngIf="addForm.get('user_email').hasError('required') && addForm.get('user_email').touched">
+        Email is required
+      </div>
+      <div class="alert  alert-danger" *ngIf="addForm.get('user_email').hasError('pattern')">Email must be a valid email
+        address
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="userAge">Age:</label>
+      <input type="number" formControlName="user_age" placeholder="Age" name="empAge" class="form-control" id="userAge"
+             min="0">
+      <div class="alert  alert-danger"
+           *ngIf="addForm.get('user_age').hasError('pattern') && addForm.get('user_age').touched">
+        Age must be from 1 to 100 years
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="userPassword">Password:</label>
+      <input type="password" formControlName="user_password" placeholder="Password" name="userPassword"
+             class="form-control" id="userPassword">
+      <div class="alert  alert-danger"
+           *ngIf="addForm.get('user_password').hasError('required') && addForm.get('user_password').touched">
+        Password is required
+      </div>
+      <div class="alert  alert-danger"
+           *ngIf=" addForm.get('user_password').hasError('minlength') && addForm.get('user_password').touched">
+        Password must be at least 6 characters
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="userPassword">Confirm Password:</label>
+      <input type="password" formControlName="confirm_password" placeholder="Confirm Password" name="userPassword"
+             class="form-control" id="confirmPassword">
+      <div class="alert  alert-danger"
+           *ngIf="addForm.get('confirm_password').hasError('required')&& addForm.get('confirm_password').touched">
+        Confirm Password is required
+      </div>
+      <div class="alert  alert-danger"
+           *ngIf="addForm.get('user_password').value !== addForm.get('confirm_password').value && addForm.get('confirm_password').touched">
+        Passwords don't match.
+      </div>
+    </div>
+
+    <button class="btn btn-success" [disabled]='addForm.invalid' *ngIf="btnvisibility" (click)="onSubmit()">Save
+    </button>
+    <button class="btn btn-success" [disabled]='addForm.invalid' *ngIf="!btnvisibility" (click)="onUpdate()">Update
+    </button>
+  </form>
+</div>

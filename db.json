@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "first_name": "John",
+      "last_name": "Peterson",
+      "user_email": "sds@sg.com",
+      "user_age": 4,
+      "user_password": "aweawe",
+      "confirm_password": "aweawe"
+    },
+    {
+      "id": 2,
+      "first_name": "Bill",
+      "last_name": "Brooks",
+      "user_email": "fifi@kotu.jpp",
+      "user_age": "30",
+      "user_password": "zxzxzx",
+      "confirm_password": "zxzxzx"
+    },
+    {
+      "id": 3,
+      "first_name": "Alex",
+      "last_name": "Lindeo",
+      "user_email": "xsd@ww.ddl",
+      "user_age": "5",
+      "user_password": "123478",
+      "confirm_password": "123478"
+    },
+    {
+      "id": 4,
+      "first_name": "Daniel",
+      "last_name": "Defo",
+      "user_email": "fvslk@dfl.ll",
+      "user_age": 63,
+      "user_password": "zxzxzx12",
+      "confirm_password": "zxzxzx12"
+    }
+  ]
+}
