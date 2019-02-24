@@ -48,10 +48,21 @@ export class AddUserComponent implements OnInit {
       user_password: ['', [Validators.required, Validators.minLength(6)]],
       confirm_password: ['', Validators.required]
 
-    });
+    }, {validator: this.checkIfMatchingPasswords('user_password', 'confirm_password')});
   }
-
-
+  
+  checkIfMatchingPasswords(passwordKey: string, passwordConfirmationKey: string) {
+    return (group: FormGroup) => {
+      const passwordInput = group.controls[passwordKey],
+        passwordConfirmationInput = group.controls[passwordConfirmationKey];
+      if (passwordInput.value !== passwordConfirmationInput.value) {
+        return passwordConfirmationInput.setErrors({notEquivalent: true});
+      } else {
+        return passwordConfirmationInput.setErrors(null);
+      }
+    };
+  }
+  
   onSubmit() {
     this.userService.createUser(this.addForm.value)
       .subscribe(data => {
