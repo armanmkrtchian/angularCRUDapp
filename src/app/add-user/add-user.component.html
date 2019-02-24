@@ -64,7 +64,7 @@
         Confirm Password is required
       </div>
       <div class="alert  alert-danger"
-           *ngIf="addForm.get('user_password').value !== addForm.get('confirm_password').value && addForm.get('confirm_password').touched">
+           *ngIf="addForm.get('confirm_password').hasError('notEquivalent') && addForm.get('confirm_password').touched">
         Passwords don't match.
       </div>
     </div>
